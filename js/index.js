@@ -14,15 +14,9 @@ food = {x:6, y:7}
 
 
 
-
-
-
-
-
 //Game Function
 function main(ctime){
   window.requestAnimationFrame(main);
-  //console.log(ctime)
   if((ctime - lastPaintTime)/1000 < 1/speed){
     return;
   }
@@ -51,7 +45,7 @@ function gameEngine(){
     inputDir = {x:0, y:0};
     alert('Game Over, Press any key to play again!');
     snakeArr = [{x:13, y:15}];
-    //musicSound.play();
+    musicSound.play();
     score = 0;
   }
 
@@ -59,6 +53,12 @@ function gameEngine(){
   if(snakeArr[0].y === food.y && snakeArr[0].x === food.x){
     foodSound.play();
     score +=1;
+    if(score > hiScoreVal){
+      hiScoreVal = score;
+      localStorage.getItem("High Score", JSON.stringify(hiScoreVal));
+      highScoreBox.innerHTML = "High Score: " + hiScoreVal;
+    }
+    scoreBox.innerHTML = "Score: " + score;
     snakeArr.unshift({x: snakeArr[0].x + inputDir.x, y: snakeArr[0].y + inputDir.y});
     let a = 2;
     let b = 16;
@@ -98,14 +98,17 @@ function gameEngine(){
 
 
 
-
-
-
-
-
-
-
 //Main logic starts here
+musicSound.play();
+let hiScore = localStorage.getItem("hiScore");
+if(hiScore === null){
+  hiScoreVal = 0;
+  localStorage.getItem("High Score", JSON.stringify(hiScoreVal));
+}
+else{
+  hiScoreVal = JSON.parse(hiScore);
+  highScoreBox.innerHTML = "High Score: " + hiScore;
+}
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e =>{
   inputDir = {x: 0, y: 1} //Start the game

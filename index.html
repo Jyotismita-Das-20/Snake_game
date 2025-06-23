@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Snake_Game</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
@@ -11,6 +10,21 @@
     <div id="scoreBox">Score: 0</div>
     <div id="highScoreBox">High Score: 0</div>
     <div id="board"></div>
+
+    <div class="move-control">
+        <div class="back_forward">
+          <button class="button" id="btn-1"><span class="material-symbols-outlined">arrow_back</span></button>
+
+          <button class="button" id="btn-2"><span class="material-symbols-outlined">arrow_forward</span></button>
+        </div>
+
+        <div class="upward_downward">
+          <button class="button" id="btn-3"><span class="material-symbols-outlined">arrow_upward</span></button>
+
+          <button class="button" id="btn-4"><span class="material-symbols-outlined ">arrow_downward</span></button>
+        </div> 
+    </div>
+
   </div>
   <script src="js/index.js"></script>
 </body>
